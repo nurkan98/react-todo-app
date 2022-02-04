@@ -19,7 +19,6 @@ function List({ workList, setWorks, filter }) {
       ? workList.filter((work) => work.done !== true)
       : workList.filter((work) => work.done !== false);
 
-  console.log(filteredList);
   return (
     <div>
       <section className="main">
