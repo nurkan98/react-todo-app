@@ -2,8 +2,7 @@ import React from "react";
 
 function Filter({ workList, setWorks, filter, setFilter }) {
   const notDoneWorks = workList.filter(({ done }) => done === false);
-
-  const count = notDoneWorks.length;
+  const doneWorks = workList.filter(({ done }) => done === true);
 
   const clearWorks = () => {
     setWorks(notDoneWorks);
@@ -13,7 +12,7 @@ function Filter({ workList, setWorks, filter, setFilter }) {
     <div>
       <footer className="footer">
         <span className="todo-count">
-          <strong> {count} </strong>
+          <strong> {notDoneWorks.length} </strong>
           items left
         </span>
         <ul className="filters">
@@ -45,7 +44,11 @@ function Filter({ workList, setWorks, filter, setFilter }) {
             </a>
           </li>
         </ul>
-        <button className="clear-completed " onClick={clearWorks}>
+        <button
+          style={doneWorks.length === 0 ? { display: "none" } : null}
+          className="clear-completed "
+          onClick={clearWorks}
+        >
           Clear completed
         </button>
       </footer>
